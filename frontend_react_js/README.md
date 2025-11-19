@@ -1,82 +1,46 @@
-# Lightweight React Template for KAVIA
+# Tic Tac Toe – React (Ocean Professional Theme)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+This project provides a clean, modern, accessible two-player Tic Tac Toe game in React using the "Ocean Professional" blue & amber theme. All logic is in the browser; there are no backend or external calls.
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- **Ocean Professional theme:** blue primary (#2563EB), amber secondary (#F59E0B), light background (#f9fafb)
+- **Accessible:** Semantic HTML (`role="grid"`/`gridcell`), ARIA live region, keyboard navigation (Tab, Enter/Space for cell), visible focus
+- **Clean state mgmt:** No global state; local hooks and pure functions for winner, draw detection, and state control
+- **Robust controls:** "New Game" (soft reset, X starts), "Reset" (hard reset) disable correctly after conclusion
+- **Defensive:** Blocks moves after win/draw, disables invalid transitions, error boundary wrapped game
+- **Modular:** App.js (root), modular Board and Square components, separated CSS (`tictactoe.css`)
+- **Lint- and security-friendly**: No insecure patterns, follows ESLint/Prettier conventions
 
-## Getting Started
+## File Structure
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
+```
+src/
+  App.js          # Main app and component composition
+  index.js        # Renders App (imports styles)
+  tictactoe.css   # Core game and theme styles
+  App.css         # Baseline styles
+  index.css       # Baseline global styles
 ```
 
-### Components
+## Usage
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+```
+npm install
+npm start
+```
+Opens in browser at [http://localhost:3000](http://localhost:3000).
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
+## Controls
+
+- **Play move:** Click cell or Tab to empty ("empty, Cell n"), press Enter/Space
+- **New Game:** Soft reset, same X goes first
+- **Reset:** Hard reset, clears all history state
+
+## About
+
+Runs entirely in browser with no data persisted or external calls. Modern React and accessible UI practices.
 
 ## Learn More
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To learn React, visit [React documentation](https://reactjs.org/).

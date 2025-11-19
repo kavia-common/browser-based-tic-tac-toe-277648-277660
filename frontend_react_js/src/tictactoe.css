@@ -1,0 +1,135 @@
+:root {
+  --tic-bg-gradient: linear-gradient(135deg, #2563eb19, #f9fafb 100%);
+  --tic-surface: #ffffff;
+  --tic-bg: #f9fafb;
+  --tic-primary: #2563eb;
+  --tic-secondary: #f59e0b;
+  --tic-cell-border: #e5e7eb;
+  --tic-win-shadow: 0 1.5px 17px #F59E0B26;
+  --tic-focus: 0 0 0 3px #2563eb44;
+  --tic-transition: all 0.18s cubic-bezier(.7,.1,.4,1.4);
+}
+
+.app-background {
+  min-height: 100vh;
+  background: var(--tic-bg-gradient);
+  color: #111827;
+  font-family: inherit;
+}
+
+.game-container {
+  margin: 0 auto;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px 2px rgba(37,99,235,0.09);
+  background: var(--tic-surface);
+  padding: 2.5rem 2rem 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 340px;
+}
+
+.status-bar {
+  min-height: 38px;
+}
+
+.tic-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 270px;
+  height: 270px;
+  margin: 0 auto;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--tic-primary) 1%, #2563eb1c 100%);
+  padding: 8px;
+  box-shadow: 0 1.5px 8px #2563EB14;
+}
+
+.tic-cell {
+  box-sizing: border-box;
+  width: 78px;
+  height: 78px;
+  border: 2.2px solid var(--tic-cell-border);
+  border-radius: 10px;
+  background: var(--tic-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--tic-primary);
+  outline: none;
+  transition: var(--tic-transition);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  margin: 0;
+}
+
+.tic-cell[aria-disabled="true"] {
+  cursor: default;
+  opacity: 0.79;
+  pointer-events: none;
+}
+
+.tic-cell:focus {
+  box-shadow: var(--tic-focus);
+  outline: none;
+  z-index: 2;
+}
+
+/* Winning cell state (if desired to style via class) */
+.tic-cell.winning {
+  border: 2.2px solid var(--tic-secondary);
+  box-shadow: var(--tic-win-shadow);
+}
+
+.btn, .btn-secondary {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75em 2.2em;
+  border-radius: 8px;
+  border: none;
+  margin: 0;
+  outline: none;
+  transition: background .15s, box-shadow .2s;
+  cursor: pointer;
+  min-width: 108px;
+  box-shadow: 0 1.5px 3px #2563EB23;
+}
+
+.btn {
+  background: var(--tic-primary);
+  color: var(--tic-surface);
+}
+
+.btn:focus, .btn-secondary:focus { box-shadow: var(--tic-focus); }
+
+.btn:hover { background: #1d4fd7; }
+
+.btn-secondary {
+  background: var(--tic-secondary);
+  color: var(--tic-surface);
+  margin-left: 2px;
+  box-shadow: 0 1.5px 3px #F59E0B27;
+}
+
+.btn-secondary:hover {
+  background: #ca8300;
+}
+
+@media (max-width: 600px) {
+  .game-container { padding: 1.2rem 0.5rem 1.1rem 0.5rem; min-width: 98vw; }
+  .tic-board { width: 94vw; height: 94vw; max-width: 270px; max-height: 270px; }
+  .tic-cell { width: 28vw; height: 28vw; max-width: 78px; max-height: 78px; }
+}
+
+/* Hide blue autofill on mobile for buttons */
+input:-webkit-autofill,
+button:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px var(--tic-surface) inset;
+  -webkit-text-fill-color: #111827;
+}
